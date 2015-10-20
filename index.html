@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Web performance</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.css">
+  <link rel="stylesheet" href="bower_components/reveal.js/css/theme/night.css">
+  <link rel="stylesheet" href="bower_components/highlightjs/styles/monokai.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section class="present">
+        <h2>Web Performance</h2>
+        <p>by Nicholas Boll</p>
+      </section>
+      <section>
+        <h2>Who Am I?</h2>
+        <ul>
+          <li><a href="http://twitter.com/NicholasBoll">@NicholasBoll</a></li>
+          <li>nicholas.boll@gmail.com</li>
+          <li>I'm a Software Engineer at LogRhythm</li>
+          <li>I've been doing web development for a long time</li>
+        </ul>
+      </section>
+      <section>
+        <h2>What is this talk about?</h2>
+        <ul>
+          <li>Understanding performance</li>
+          <li>Identifying problems</li>
+        </ul>
+      </section>
+      <section>
+        <h2>What is this talk not about?</h2>
+        <ul>
+          <li>Micro-optimization</li>
+          <li>Frameworks</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Why not frameworks?</h2>
+        <ul>
+          <li>Frameworks just make it easier to develop applications</li>
+          <li>Your application determines performance</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Understanding performance</h2>
+        <p>More than "60 FPS"</p>
+      </section>
+      <section>
+        <h2>It's about the user</h2>
+      </section>
+      <section>
+        <h2>RAIL performance model</h2>
+        <ul>
+          <li><strong>R</strong>esponse - 100ms</li>
+          <li><strong>A</strong>nimation - 16ms</li>
+          <li><strong>I</strong>dle - 50ms</li>
+          <li><strong>L</strong>oad - 1s</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Response</h2>
+        <ul>
+          <li>Respond to the user's action in under 100ms</li>
+          <li>A user will perceive &lt;100ms delay as instant</li>
+          <li>Provide feedback if an action will take over 500ms (loading animation)</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Animate</h2>
+        <ul>
+          <li>60 FPS = 16.66ms frame</li>
+          <li>Your work should be under 10ms to sustain 60FPS</li>
+          <li>Animation, scrolling and interaction (touchmove/mousemove)</li>
+          <li>1 UI thread for JS, DOM/CSSOM, Layout and Paint</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Idle</h2>
+        <ul>
+          <li>Break up work into 50ms chunks</li>
+          <li>UI thread is blocked while JS is busy</li>
+          <li>This is hard and very app dependent</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Load</h2>
+        <ul>
+          <li>&lt;1s keeps the user's focus</li>
+          <li>This one is hard in web applications</li>
+          <li>Tools like Webpack chunks can help break up page loading</li>
+          <li>Concepts like server-side rendering can help</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Render pipeline</h2>
+        <img src="./img/render-frame.png">
+        <ul>
+          <li>JavaScript is only a portion of the pipeline</li>
+          <li>JavaScript may or may not trigger the rest of the pipeline</li>
+          <li>Some items may be skipped</li>
+          <li><a href="http://csstriggers.com/">CSS Triggers</a> - properties and what they trigger</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Identifying problems</h2>
+        <p>Tooling</p>
+      </section>
+      <section>
+        <h2>Further reading</h2>
+        <ul>
+          <li><a href="http://www.phpied.com/css-animations-off-the-ui-thread/">CSS animations off the UI thread</a></li>
+          <li><a href="https://msdn.microsoft.com/en-us/library/jj680148(v=vs.85).aspx">IE composition thread</a></li>
+          <li><a href="https://benoitgirard.wordpress.com/2012/05/15/off-main-thread-compositing-omtc-and-why-it-matters/">Off Main Thread Composition (Firefox)</a></li>
+          <li><a href="http://www.html5rocks.com/en/tutorials/speed/css-paint-times/">CSS Paint Times and Page Render Weight</a></li>
+          <li><a href="https://developers.google.com/web/fundamentals/performance/rendering/">Rendering Performance (Google)</a></li>
+          <li><a href="https://developers.google.com/web/tools/chrome-devtools/profile/evaluate-performance/rail">RAIL Performance Model</a></li>
+          <li><a href="http://csstriggers.com/">CSS Triggers - Layout, Paint, Composition</a></li>
+        </ul>
+      </section>
+      <section>
+        <h2>Questions?</h2>
+      </section>
+    </div>
+  </div>
+  <script src="bower_components/reveal.js/lib/js/head.min.js"></script>
+  <script src="bower_components/reveal.js/js/reveal.js"></script>
+  <script src="bower_components/reveal.js/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      dependencies: [
+        { src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+      ],
+      history: true
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "name": "web-performance-presentation",
+  "version": "1.0.0",
+  "description": "A presentation on web performance and profiling",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicholasBoll/web-performance-presentation.git"
+  },
+  "keywords": [
+    "web",
+    "performance",
+    "profile"
+  ],
+  "author": "nicholas.boll@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NicholasBoll/web-performance-presentation/issues"
+  },
+  "homepage": "https://github.com/NicholasBoll/web-performance-presentation#readme",
+  "devDependencies": {
+    "bower": "^1.6.3",
+  }
+}
